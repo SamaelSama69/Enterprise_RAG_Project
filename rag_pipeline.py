@@ -24,10 +24,10 @@ tokenized = [t.split(" ") for t in texts]
 bm25 = BM25Okapi(tokenized)
 
 pipe = pipeline(
-    "text2text-generation",
+    "text-generation",
     model="google/flan-t5-base",
-    framework="pt",
-    max_length=512
+    max_new_tokens=256,
+    temperature=0.1
 )
 
 llm = HuggingFacePipeline(pipeline=pipe)
